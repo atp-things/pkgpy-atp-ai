@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+setuptools = "*"
+build = "*"
+pprintpp = "*"
+pytest = "*"
+pytest-xdist = "*"
+jsonschema = "*"
+pandas = "*"
+setuptools-git-versioning = "*"
+toml = "*"
+types-toml = "*"
+types-pyyaml = "*"
+pandas-stubs = "*"
+mypy = "*"
+mlflow = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12.9"
+
+[scripts]
+test_all = "pytest tests  -x"
+test_all_verbose = "pytest tests -v -x"
+test_all_parallel = "pytest tests -n=auto  -x"

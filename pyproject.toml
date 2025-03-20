@@ -1,0 +1,102 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "setuptools-git-versioning<2"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools-git-versioning]
+enabled = true
+
+[project]
+name = "atpai"
+dynamic = ["version"]
+authors = [{ name = "Andraz Polak", email = "andrazpolak@gmail.com" }]
+description = "Datas."
+readme = "README.md"
+requires-python = '>=3.11'
+keywords = ["records", "csv", "dataset", "measurement"]
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = ["toml", "types-toml", "types-pyyaml", "pandas-stubs", "mlflow"]
+
+[project.urls]
+homepage = 'https://github.com/atp-things/pkgpy-atp-ai'
+repository = 'https://github.com/atp-things/pkgpy-atp-ai'
+PyPI = "https://pypi.org/project/atpai/"
+
+# [tool.setuptools]
+# include-package-data = true
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+# Same as Black.
+line-length = 88
+indent-width = 4
+target-version = "py311"
+extend-include = ["*.ipynb"]
+fix = true
+
+[tool.ruff.lint]
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "N", # pep8-naming
+    "F", # pyflakes
+    "ASYNC",
+    "I", # isort
+    "B", # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade
+
+]
+ignore = [
+    "E501", # line too long, handled by black
+    "B008", # do not perform function calls in argument defaults
+    "C901", # too complex
+    # "W191",  # indentation contains tabs
+    "F401", # imported but unused
+    "E722", # do not use bare 'except'
+
+]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = 88

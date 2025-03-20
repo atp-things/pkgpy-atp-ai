@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+      # - id: end-of-file-fixer
+      # - id: trailing-whitespacey
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: requirements-txt-fixer
+  - repo: https://gitlab.com/bmares/check-json5
+    rev: v1.0.0
+    hooks:
+      - id: check-json5
+
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.11.1
+    hooks:
+      - id: ruff
+        args:
+          - --fix
+      - id: ruff-format

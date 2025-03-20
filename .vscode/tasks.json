@@ -1,0 +1,48 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      // remove previosu bulds
+      "label": "PyPIPackage - build",
+      "type": "shell",
+      "command": "pipenv run python -m build"
+    },
+    // Bash
+    {
+      "label": "Create git tag (release)",
+      "type": "shell",
+      "command": "./scripts/release.sh"
+    },
+    // Git - pre-commit
+    {
+      "label": "preCommit - install",
+      "detail": "Install pre-commit hooks from .pre-commit-config.yaml to .git hooks.",
+      "type": "shell",
+      "command": "pre-commit install"
+    },
+    {
+      "label": "preCommit - run all",
+      "detail": "Run pre-commit hooks described in .pre-commit-config.yaml",
+      "type": "shell",
+      "command": "pipenv run pre-commit run --all-files"
+    },
+    // PyTest
+    {
+      "label": "pytest - all",
+      "type": "shell",
+      "command": "pipenv run test_all"
+    },
+    {
+      "label": "pytest - all verbose",
+      "type": "shell",
+      "command": "pipenv run test_all_verbose"
+    },
+    {
+      "label": "pytest - all parallel",
+      "type": "shell",
+      "command": "pipenv run test_all_parallel"
+    }
+  ]
+}
